@@ -103,11 +103,40 @@ a {
     border: 1px solid rgba(255, 255, 255, 0.35);
     font-size: 16px;
 }
-
 .user-menu a:last-child {
     background: var(--main-blue);
     font-weight: 500;
     font-size: 16px;
+}
+.user-menu a.userBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: none;
+    border: none;
+}
+.user-menu a.userBtn:hover {
+    opacity: 100%;
+}
+
+.userBtn img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    padding: 2px;
+    border: 0.5px solid #aaa;
+    position: relative;
+    top: -5px;
+}
+
+.userBtn .nickname {
+    font-size: 16px;
+    white-space: nowrap;
 }
 
 

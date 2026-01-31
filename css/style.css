@@ -72,14 +72,14 @@ body {
 
 /* 영화 섹션 */
 .movie-section {
-	padding: 70px 10vw;
+	padding: 3vw 10vw;
 	background: var(--main-background);
 	text-align: center;
 }
 
 .section-title {
 	font-weight: 600;
-	font-size: 35px;
+	font-size: 2.12vw;
 	margin-bottom: 20px;
 	text-align: left;
 }
@@ -96,17 +96,21 @@ body {
 	flex-wrap: nowrap;
 	scroll-behavior: smooth;
 	overflow: hidden;
+
+	gap: 0.8%;
 }
 
 /* 영화 카드 */
 .movie-card {
 	width: 13%;
 	position: relative;
-	aspect-ratio: 2 / 3;
 	border-radius: 7%;
 	overflow: hidden;
 	cursor: pointer;
 	transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+	flex: 0 0 calc((100% - 6 * 1.2%) / 7);
+    aspect-ratio: 2 / 3;
 }
 
 .movie-card img {
@@ -204,45 +208,63 @@ body {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 }
-
+.rank-section{
+	padding: 3.5vw 4vw;
+}
 .top7-list {
 	overflow: hidden;
 	justify-content: space-between;
-	gap: 0;
+
 }
 
+/* RANK 카드 */
 .rank-card {
-	position: relative;
-	overflow: visible !important;
-	transform: none !important;
+    position: relative;
+    overflow: visible !important; /* 숫자는 밖으로 */
+    transform: none !important;
+	
 }
 
+.rank-card img {
+    clip-path: inset(0);
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+/* 포스터만 잘리게 */
 .rank-card .poster-wrap {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	border-radius: 7%;
-	overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 7%;
+    overflow: hidden; /* 이미지 hover만 자름 */
 }
 
+/* 랭크 숫자 */
 .rank-card .rank-num {
-	position: absolute;
-	left: -20px;
-	bottom: -40px;
+    position: absolute;
+    left: -20px;
+    bottom: -40px;
 
-	font-size: 140px;
-	font-weight: 900;
-	line-height: 1;
+    font-size: 12vw;
+    font-weight: 900;
+    line-height: 1;
 
-	color: rgba(255, 255, 255, 0.95);
-	text-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
 
-	z-index: 99999;
-	pointer-events: none;
+    z-index: 99999;
+    pointer-events: none;
 
-	transform: none !important;
-	filter: none !important;
-	transition: none !important;
+    transform: none !important;
+    filter: none !important;
+}
+
+/* hover 시 숫자만 흐리게 */
+.rank-card:hover .rank-num {
+    opacity: 0.15;
+}
+.clip{
+	overflow: hidden;
 }
 
 .rank-card:hover img {
@@ -258,9 +280,6 @@ body {
 	overflow: visible !important;
 }
 
-.top7-list .rank-card {
-	overflow: visible !important;
-}
 
 .movie-card:hover .rank-num {
 	transform: none;
