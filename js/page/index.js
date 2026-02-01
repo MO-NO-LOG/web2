@@ -31,11 +31,15 @@ fetch(API + "/api/movies/trend")
   });
 
 /* 🎬 TOP 7 */
-fetch(API + "/api/movies/recommended?limit=7")
+/* 🎬 TOP 7 (별점 높은 순) */
+fetch(API + "/api/movies/recommended")
   .then(res => res.json())
   .then(movies => {
+    const top7 = movies
+      .sort((a, b) => (b.averageRating ?? 0) - (a.averageRating ?? 0));
+
     document.getElementById("top7List").innerHTML =
-      movies.map((m, i) => renderMovieCard(m, i + 1)).join("");
+      top7.map((m, i) => renderMovieCard(m, i + 1)).join("");
   });
 
 /* ⭐ 평점순 */
@@ -53,3 +57,5 @@ fetch(API + "/api/movies/recommended")
     document.getElementById("endingList").innerHTML =
       movies.map(m => renderMovieCard(m)).join("");
   });
+//=============================================================================================
+//=============================================================================================

@@ -25,8 +25,19 @@ fetch("../header.html")
 
             userMenu.innerHTML = `
                 <a href="mypage.html" class="userBtn">
-                    ${user.nickname}
                     <img src="${user.img ?? '/images/ui/default-user.png'}" loading="lazy">
+                    ${user.nickname}
+
+                    <ul>
+                        <li><a href="mypage.html">
+                            <img src="images/ui/user-1.png" alt="mypage">
+                            <span>마이페이지</span>
+                        </a></li>
+                        <li>
+                            <img src="images/ui/exit.png" alt="logout">
+                            <span>로그아웃</span>
+                        </li>
+                    </ul>
                 </a>
             `;
         });
