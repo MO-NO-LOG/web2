@@ -32,16 +32,23 @@ function renderMovies() {
         card.className = "movie-card";
 
         card.innerHTML = `
+        <div class="card-poster">
             <img src="${movie.image}">
-            <div class="card-info">
-                <div class="card-top">
-                    <span class="genre">${movie.genre}</span>
-                    <span class="rating">⭐ ${movie.rating}</span>
-                </div>
-                <div class="title">${movie.title}</div>
-                <div class="date">${movie.date}</div>
+            <button class="wish-btn" type="button" aria-label="위시리스트">
+                <span class="wish-icon"></span>
+            </button>
+        </div>
+
+        <div class="card-info">
+            <div class="card-top">
+                <span class="genre">${movie.genre}</span>
+                <span class="rating">⭐ ${movie.rating}</span>
             </div>
+            <div class="title">${movie.title}</div>
+            <div class="date">${movie.date}</div>
+        </div>
         `;
+
 
         grid.appendChild(card);
     });
@@ -88,3 +95,13 @@ function renderPagination() {
 
 renderMovies();
 renderPagination();
+
+document.addEventListener("click", (e) => {
+    const wishBtn = e.target.closest(".wish-btn");
+    if (!wishBtn) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    wishBtn.classList.toggle("on");
+});
